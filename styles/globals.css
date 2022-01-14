@@ -28,12 +28,11 @@ a {
 }
 
 #logo:hover {
-  background: url(https://media.giphy.com/media/xT8qBgf4STo1TZBOda/giphy.gif);
+  background: url(https://media.giphy.com/media/3o7TKDcovELwB2DM64/giphy.gif);
   background-size: cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .notion-list li {
   padding: 2px 0;
 }
