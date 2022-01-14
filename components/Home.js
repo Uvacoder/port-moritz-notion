@@ -18,8 +18,8 @@ export default function Home() {
       <div className="w-full flex justify-center">
         <div className="w-full py-20 md:px-8 mx-8 max-w-2xl">
           <div className='prose prose-neutral dark:prose-invert dark:text-white'>
-            <p>Hi, I’m Moritz. <span className='opacity-50 bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-400 rounded px-2 py-1'>he/him</span></p>
-            <p>I'm a fan of <strong>learning in public</strong> and I <span className='border-black border-dashed'>copycatted</span> the building blocks of <a href='http://brianlovin.com' target='_blank' rel='noreferrer'>brianlovin.com</a> to publish content to the outta world.</p>
+            <p>Hi, I&apos;m Moritz. <span className='opacity-50 bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-400 rounded px-2 py-1'>he/him</span></p>
+            <p>I&apos;m a fan of <strong>learning in public</strong> and I <span className='border-black border-dashed'>copycatted</span> the building blocks of <a href='http://brianlovin.com' target='_blank' rel='noreferrer'>brianlovin.com</a> to publish content to the outta world.</p>
             <p>I <Link href='/writing'>write</Link> down little realizations I made on my way.</p>
             <p>You can contact me via <a href='https://twitter.com/mrzmyr' target='_blank' rel='noreferrer'>Twitter</a>.</p>
           </div>
