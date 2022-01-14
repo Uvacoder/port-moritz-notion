@@ -9,7 +9,7 @@ import TitleBar from './TitleBar';
 const fetcher = url => fetch(url).then(r => r.json())
 
 export default function Home() {
-  const { data, error } = useSWR('https://oku.club/api/collections/user/jadann/reading', fetcher)
+  const { data, error } = useSWR('/api/reading', fetcher)
   
   return (
     <>
