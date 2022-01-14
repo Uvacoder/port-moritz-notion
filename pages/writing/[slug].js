@@ -45,7 +45,7 @@ const Writing = ({ pages, page }) => {
               className="lg:hidden"
               backButton
               backButtonHref={routes.writing.path}
-              title={routes.writing.path}
+              title={routes.writing.title}
             />
             <ListView.Content>
               <div className='max-w-xl'>
