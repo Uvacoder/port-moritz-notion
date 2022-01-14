@@ -32,7 +32,7 @@ const Production = ({ plugins }) => {
       <TitleBar title={routes.production.title}/>
       <div className='flex items-center justify-center'>
         <div className="
-          w-full py-24 px-8 mx-8
+          w-full py-24 p-6 md:p-12
         ">
           <div className='flex flex-col mb-8 prose'>
             <h1 className='dark:text-white mb-0'>Plugins for Music Production</h1>
