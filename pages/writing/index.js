@@ -3,7 +3,7 @@ import Layout from '../../components/Layout'
 import ListView from '../../components/ListView';
 import TitleBar from '../../components/TitleBar';
 import routes from '../../config/routes';
-import { getBiteSizedLearnings } from '../../lib/notion';
+import { getWritings } from '../../lib/notion';
 
 const BiteSizedLearnings = ({ pages }) => {
   
@@ -21,7 +21,7 @@ const BiteSizedLearnings = ({ pages }) => {
 }
 
 export const getStaticProps = async (context) => {
-  const pages = await getBiteSizedLearnings()
+  const pages = await getWritings()
 
   return {
     props: {
