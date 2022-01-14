@@ -51,8 +51,8 @@ const Sidebar = () => {
       )}
 
       <Link href="/">
-        <a id='logo' className='flex items-center grow text-sm text-black dark:text-white'>
-          <span>moritz.works</span>
+        <a id='logo' className='flex items-center grow text-3xl text-black dark:text-white italic '>
+          <span>m</span>
         </a>
       </Link>
 
