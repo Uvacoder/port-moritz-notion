@@ -10,7 +10,7 @@ export default function BookPreview({ book }) {
           </div>
         </div>
         <div className='m-4'>
-          <div className='text-sm line-clamp-1'>{book.title}</div>
+          <div className='text-sm line-clamp-2'>{book.title}</div>
           <div className='mt-1 text-xs opacity-60'>by {book.authors.map(a => a.name).join(', ')} {book.pageCount && `(${book.pageCount} pages)`}</div>
         </div>
       </div>
