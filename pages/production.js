@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Layout from '../components/Layout';
+import TitleBar from '../components/TitleBar';
 import routes from '../config/routes';
 import { getProductionPlugins } from '../lib/notion';
 
@@ -28,6 +29,7 @@ const Production = ({ plugins }) => {
   return (
     <Layout>
       <NextSeo {...routes.production.seo} />
+      <TitleBar title={routes.production.title}/>
       <div className='flex items-center justify-center'>
         <div className="
           w-full py-24 px-8 mx-8
