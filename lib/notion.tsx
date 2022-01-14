@@ -78,7 +78,7 @@ export const getProductionPlugins = async () => {
     database_id: process.env.NOTION_DATABASE_PRODUCTION_PLUGINS_ID,
   });
 
-  return response.results.map(result => ({
+  return response.results.map((result: any) => ({
     title: result.properties.name.title[0].text.content,
     description: result.properties.description.rich_text.length > 0 ? result.properties.description.rich_text[0].text.content : '',
     author: result.properties.author.rich_text.length > 0 ? result.properties.author.rich_text[0].text.content : '',
