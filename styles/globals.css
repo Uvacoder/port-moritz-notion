@@ -27,7 +27,8 @@ a {
   box-sizing: border-box;
 }
 
-#logo:hover {
+#logo:hover,
+#logo:focus {
   background: url(https://media.giphy.com/media/3o7TKDcovELwB2DM64/giphy.gif);
   background-size: cover;
   -webkit-background-clip: text;

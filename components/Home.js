@@ -16,7 +16,10 @@ export default function Home() {
       <TitleBar />
       <NextSeo {...routes.home.seo} />
       <div className="w-full flex justify-center">
-        <div className="w-full py-20 md:px-8 mx-8 max-w-2xl">
+        <div className="w-full py-4 md:py-20 md:px-8 mx-8 max-w-2xl">
+          <div id='logo' 
+          className='lg:hidden inline-block font-bold text-3xl text-black dark:text-white italic mb-8 hover:cursor-crosshair'
+          >m</div>
           <div className='prose prose-neutral dark:prose-invert dark:text-white'>
             <p>Hi, I&apos;m Moritz. <span className='opacity-50 bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-400 rounded px-2 py-1'>he/him</span></p>
             <p>I&apos;m a fan of <strong>learning in public</strong> and I <span className='border-black border-dashed'>copycatted</span> the building blocks of <a href='http://brianlovin.com' target='_blank' rel='noreferrer'>brianlovin.com</a> to publish content to the outta world.</p>
