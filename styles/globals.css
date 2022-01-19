@@ -31,6 +31,7 @@ a {
 #logo:focus {
   background: url(https://media.giphy.com/media/3o7TKDcovELwB2DM64/giphy.gif);
   background-size: cover;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -44,4 +45,8 @@ a {
 
 .prose :where(a):not(:where([class~="not-prose"] *)) {
   text-decoration-color: #DDD;
+}
+
+.notion-asset-wrapper {
+  max-width: 100%;
 }
