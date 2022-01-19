@@ -21,7 +21,7 @@ const _getBlocks = async (id: string) => {
 const _transformPage = (page: any): Post => {
   return {
     id: page.id,
-    title: page.properties.Name.title[0].plain_text,
+    title: page.properties.title.title[0].plain_text,
     icon: page.icon,
     slug: page.properties.slug.rich_text[0].plain_text,
     excerpt: page.properties.excerpt.rich_text.length > 0 ? 
@@ -37,17 +37,21 @@ export const getWritings = async (): Promise<Post[]> => {
     database_id: process.env.NOTION_DATABASE_WRITING_ID
   });
 
-  return response.results.map((result: any) => ({
-    id: result.id,
-    icon: result.icon,
-    title: result.properties.Name.title[0].plain_text,
-    slug: result.properties.slug.rich_text.length > 0 ? result.properties.slug.rich_text[0].plain_text : null,
-    excerpt: result.properties.excerpt.rich_text.length > 0 ? 
-      result.properties.excerpt.rich_text[0].plain_text : null,
-    createdAt: result.properties.created_at.date !== null ? 
-      new Date(result.properties.created_at.date.start).toISOString() : null,
-    updatedAt: result.last_edited_time
-  })).filter((post: Post) => post.slug !== null);
+  return response.results
+    .filter((result: any) => {
+      return result.properties.slug.rich_text.length > 0
+    })
+    .map((result: any) => ({
+      id: result.id,
+      icon: result.icon,
+      title: result.properties.title.title[0].plain_text,
+      slug: result.properties.slug.rich_text.length > 0 ? result.properties.slug.rich_text[0].plain_text : null,
+      excerpt: result.properties.excerpt.rich_text.length > 0 ? 
+        result.properties.excerpt.rich_text[0].plain_text : null,
+      createdAt: result.properties.created_at.date !== null ? 
+        new Date(result.properties.created_at.date.start).toISOString() : null,
+      updatedAt: result.last_edited_time
+    }))
 }
 
 export const getWriting = async (slug: string) => {  
