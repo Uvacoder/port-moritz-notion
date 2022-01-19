@@ -3,10 +3,15 @@ import { ArrowLeft, Menu } from 'react-feather';
 import useSidebar from '../hooks/useSidebar';
 
 const TitleBar = ({
-  backButton,
-  backButtonHref,
   title,
-  className
+  backButton = false,
+  backButtonHref = '',
+  className = ''
+}: {
+  title: string;
+  backButton?: boolean;
+  backButtonHref?: string;
+  className?: string;
 }) => {
   const { isOpen, setIsOpen } = useSidebar()
   

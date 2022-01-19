@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import ListView from '../../components/ListView';
 import NotionPage from '../../components/NotionPage';
@@ -8,10 +9,14 @@ import TitleBar from '../../components/TitleBar';
 import routes from '../../config/routes';
 import { baseUrl, defaultSEO } from '../../config/seo';
 import { getWriting, getWritings } from '../../lib/notion';
+import Post from '../../types/Post'
 
 dayjs.extend(relativeTime)
 
-const Writing = ({ pages, page }) => {
+const Writing = ({ pages, page }: { pages: any, page: Post }) => {
+  const router = useRouter()
+  const { slug } = router.query
+
   return (
     <>
       <NextSeo
@@ -38,7 +43,14 @@ const Writing = ({ pages, page }) => {
               backButton
               backButtonHref={routes.writing.path}
             />
-            {pages.map(page => <ListView.SidebarItem href={`${routes.writing.path}/${page.slug}`} isActive={page.isActive} data={page} key={page.title} />)}
+            {pages.map((page: Post) => (
+              <ListView.SidebarItem 
+                href={`${routes.writing.path}/${page.slug}`} 
+                isActive={slug === page.slug} 
+                data={page} 
+                key={page.title} 
+              />
+            ))}
           </ListView.Sidebar>
           <ListView.Main>
             <TitleBar
@@ -65,12 +77,8 @@ const Writing = ({ pages, page }) => {
   )
 }
 
-export const getStaticProps = async ({ params }) => {  
-  const pages = (await getWritings()).map(g => {
-    g.isActive = params.slug === g.slug
-    return g;
-  })
-
+export const getStaticProps = async ({ params }: { params: any }) => {  
+  const pages = await getWritings()
   const page = await getWriting(params.slug)
 
   return {
@@ -93,7 +101,7 @@ export async function getStaticPaths() {
         },
       }
     }),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 

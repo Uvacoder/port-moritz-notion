@@ -36,20 +36,24 @@ export const getWritings = async (): Promise<Post[]> => {
   const response = await notion.databases.query({ 
     database_id: process.env.NOTION_DATABASE_WRITING_ID
   });
-
-  return response.results
-    .filter((result: any) => {
-      return result.properties.slug.rich_text.length > 0
+  
+  const valid_pages = response.results
+    .filter((result: any) => {      
+      return (
+        result.properties.title.title.length > 0 &&
+        result.properties.slug.rich_text.length > 0 &&
+        result.properties.excerpt.rich_text.length > 0 &&
+        result.properties.created_at.date !== null
+      )
     })
-    .map((result: any) => ({
+
+  return valid_pages.map((result: any) => ({
       id: result.id,
       icon: result.icon,
       title: result.properties.title.title[0].plain_text,
-      slug: result.properties.slug.rich_text.length > 0 ? result.properties.slug.rich_text[0].plain_text : null,
-      excerpt: result.properties.excerpt.rich_text.length > 0 ? 
-        result.properties.excerpt.rich_text[0].plain_text : null,
-      createdAt: result.properties.created_at.date !== null ? 
-        new Date(result.properties.created_at.date.start).toISOString() : null,
+      slug: result.properties.slug.rich_text[0].plain_text,
+      excerpt: result.properties.excerpt.rich_text[0].plain_text,
+      createdAt: new Date(result.properties.created_at.date.start).toISOString(),
       updatedAt: result.last_edited_time
     }))
 }

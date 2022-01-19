@@ -4,8 +4,9 @@ import ListView from '../../components/ListView';
 import TitleBar from '../../components/TitleBar';
 import routes from '../../config/routes';
 import { getWritings } from '../../lib/notion';
+import Post from '../../types/Post';
 
-const Writings = ({ pages }) => {
+const Writings = ({ pages }: { pages: any }) => {
   
   return (
     <>
@@ -13,14 +14,21 @@ const Writings = ({ pages }) => {
       <Layout>
         <ListView.Sidebar>
           <TitleBar title={routes.writing.title}/>
-          {pages.map(page => <ListView.SidebarItem href={`${routes.writing.path}/${page.slug}`} key={page.title} data={page} />)}
+          {pages.map((page: Post) => (
+            <ListView.SidebarItem 
+              href={`${routes.writing.path}/${page.slug}`} 
+              key={page.title} 
+              isActive={false}
+              data={page}
+            />
+          ))}
         </ListView.Sidebar>
       </Layout>
     </>
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async (context: any) => {
   const pages = await getWritings()
 
   return {
