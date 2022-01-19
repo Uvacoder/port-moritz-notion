@@ -53,7 +53,7 @@ const Writing = ({ pages, page }) => {
                   <h1 className='text-2xl font-bold dark:text-white'>{page.title}</h1>
                   <div className='mt-2 text-neutral-500'>Published {dayjs().to(page.createdAt)} · Updated {dayjs().to(page.updatedAt)}</div>
                 </div>
-                <div className='prose prose-p:mb-3 prose-p:mt-3 leading-snug dark:prose-invert'>
+                <div className='prose prose-p:mb-3 prose-p:mt-3 dark:prose-invert leading-normal'>
                   {page !== undefined && <NotionPage blocks={page.blocks} />}
                 </div>
               </div>
