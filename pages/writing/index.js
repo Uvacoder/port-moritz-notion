@@ -5,7 +5,7 @@ import TitleBar from '../../components/TitleBar';
 import routes from '../../config/routes';
 import { getWritings } from '../../lib/notion';
 
-const BiteSizedLearnings = ({ pages }) => {
+const Writings = ({ pages }) => {
   
   return (
     <>
@@ -31,4 +31,4 @@ export const getStaticProps = async (context) => {
   }
 }
 
-export default BiteSizedLearnings
+export default Writings
