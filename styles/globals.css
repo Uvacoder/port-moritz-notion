@@ -50,3 +50,19 @@ a {
 .notion-asset-wrapper {
   max-width: 100%;
 }
+
+@media screen and (min-width: 768px) {
+  .notion-row {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.notion-asset-wrapper > div {
+  padding-bottom: 0 !important;
+}
+
+.notion-image-inset {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
