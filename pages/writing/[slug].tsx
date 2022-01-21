@@ -20,7 +20,7 @@ const Writing = ({ pages, page }: { pages: any, page: Post }) => {
   return (
     <>
       <NextSeo
-        title={`${page.title} | ${defaultSEO.title}`}
+        title={`${page.title}`}
         description={page.excerpt}
         openGraph={{
           title: page.title,
