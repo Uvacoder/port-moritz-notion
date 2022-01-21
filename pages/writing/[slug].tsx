@@ -62,7 +62,7 @@ const Writing = ({ pages, page }: { pages: any, page: Post }) => {
             <ListView.Content>
               <div className='max-w-xl'>
                 <div className='mb-8'>
-                  <h1 className='text-2xl font-bold dark:text-white'>{page.title}</h1>
+                  <h1 className='text-2xl font-bold dark:text-white'>{page.icon?.emoji} {page.title}</h1>
                   <div className='mt-2 text-neutral-500'>Published {dayjs().to(page.createdAt)} · Updated {dayjs().to(page.updatedAt)}</div>
                 </div>
                 <div className='prose prose-p:mb-3 prose-p:mt-3 dark:prose-invert leading-normal'>
