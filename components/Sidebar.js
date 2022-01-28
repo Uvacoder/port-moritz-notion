@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowLeft, Edit3, GitHub, Home, Speaker, Sunrise, Sunset, Twitter, X } from 'react-feather';
+import { ArrowLeft, BarChart2, Edit3, GitHub, Home, Speaker, Sunrise, Sunset, Twitter, X } from 'react-feather';
 import { useAudio } from 'react-use';
 import routes from '../config/routes';
 import useDarkMode from '../hooks/useDarkMode';
@@ -92,7 +92,7 @@ const Sidebar = () => {
         onClick={() => setIsOpen(false)}
       />
 
-      <SidebarHeadline>Social Networks</SidebarHeadline>
+      <SidebarHeadline>Online</SidebarHeadline>
       <SidebarLink 
         title='Twitter' 
         href="https://twitter.com/mrzmyr"
@@ -102,6 +102,11 @@ const Sidebar = () => {
         title='GitHub' 
         href="https://github.com/mrzmyr/moritz.works"
         icon={<GitHub size={16} />}
+      />
+      <SidebarLink 
+        title='Page Visits' 
+        href="https://app.splitbee.io/public/moritz.works"
+        icon={<BarChart2 size={16} />}
       />
     </div>
 
