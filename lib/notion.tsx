@@ -4,10 +4,13 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
 
 import Post from '../types/Post';
 
+const NOTION_DATABASE_WRITING_ID = '0499b90b-5ed1-466d-af88-5b15dc8f80d9'
+const NOTION_DATABASE_PRODUCTION_PLUGINS_ID = '5ce0f0f2-c415-49a1-abc4-52ec6833cfeb'
+
 const _getBlocks = async (id: string) => {
   return notion.blocks.children.list({
     block_id: id,
-    page_size: 50,
+    page_size: 100,
   }).then((res: any) => res.results)
 }
 
@@ -27,7 +30,7 @@ const _transformPage = (page: any): Post => {
 
 export const getWritings = async (): Promise<Post[]> => {
   const response = await notion.databases.query({ 
-    database_id: process.env.NOTION_DATABASE_WRITING_ID
+    database_id: NOTION_DATABASE_WRITING_ID
   });
   
   const valid_pages = response.results
@@ -53,7 +56,7 @@ export const getWritings = async (): Promise<Post[]> => {
 
 export const getWriting = async (slug: string) => {  
   const response = await notion.databases.query({ 
-    database_id: process.env.NOTION_DATABASE_WRITING_ID,
+    database_id: NOTION_DATABASE_WRITING_ID,
     filter: {
       or: [{
           property: 'slug',
@@ -78,7 +81,7 @@ export const getWriting = async (slug: string) => {
 
 export const getProductionPlugins = async () => {
   const response = await notion.databases.query({ 
-    database_id: process.env.NOTION_DATABASE_PRODUCTION_PLUGINS_ID,
+    database_id: NOTION_DATABASE_PRODUCTION_PLUGINS_ID,
   });
 
   return response.results.map((result: any) => ({

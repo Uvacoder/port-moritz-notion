@@ -46,7 +46,10 @@ const SidebarItem = ({
   return (
     <Link href={href} passHref>
       <a className={`${className} m-2 py-3 px-4 mb-1 text-sm cursor-pointer rounded-lg ${isActive ? 'bg-black text-white dark:bg-neutral-700' : 'text-black hover:bg-black hover:bg-opacity-5 dark:text-white dark:hover:bg-neutral-800'}`}>
-        <div className='font-semibold'>{data.icon?.emoji} {data.title}</div>
+        <div className='font-semibold flex justify-between items-center'>
+          <div>{data.title}</div>
+          <div className='bg-neutral-100 rounded-full w-6 h-6 text-center flex justify-center items-center'>{data.icon?.emoji}</div>
+        </div>
         <div className='mt-1 opacity-70 line-clamp-2'>{data.excerpt}</div>
         <div className='mt-1 opacity-50'>{dayjs(data.createdAt).format('MMM DD, YYYY')}</div>
       </a>
