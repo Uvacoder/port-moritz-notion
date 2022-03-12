@@ -22,8 +22,7 @@ const _transformPage = (page: any): Post => {
     slug: page.properties.slug.rich_text[0].plain_text,
     excerpt: page.properties.excerpt.rich_text.length > 0 ? 
       page.properties.excerpt.rich_text[0].plain_text : null,
-    createdAt: page.properties.created_at.date !== null ? 
-      new Date(page.properties.created_at.date.start).toISOString() : null,
+    createdAt: new Date(page.properties.created_at.date.start).toISOString(),
     updatedAt: page.last_edited_time,
   }
 }
