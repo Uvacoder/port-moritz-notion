@@ -2,20 +2,13 @@ const { Client } = require('@notionhq/client');
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 
-const NOTION_API_HOST = process.env.NOTION_API_HOST;
-const NOTION_API_ACCESS_TOKEN = process.env.NOTION_API_ACCESS_TOKEN;
-
 import Post from '../types/Post';
 
 const _getBlocks = async (id: string) => {
-  id = id.replace(/-/gm, '');
-  const data = await fetch(`${NOTION_API_HOST}/v1/page/${id}`, {
-    headers: {
-      authorization: `Bearer ${NOTION_API_ACCESS_TOKEN}`,
-    }
-  }).then(res => res.json());
-
-  return data
+  return notion.blocks.children.list({
+    block_id: id,
+    page_size: 50,
+  }).then((res: any) => res.results)
 }
 
 const _transformPage = (page: any): Post => {
@@ -74,6 +67,8 @@ export const getWriting = async (slug: string) => {
   const pageId = response.results[0].id;
   const page = _transformPage(response.results[0]);
   const blocks = await _getBlocks(pageId);
+
+  console.log(blocks)
 
   return {
     ...page,

@@ -7,9 +7,9 @@ import ListView from '../../components/ListView';
 import NotionPage from '../../components/NotionPage';
 import TitleBar from '../../components/TitleBar';
 import routes from '../../config/routes';
-import { baseUrl, defaultSEO } from '../../config/seo';
+import { baseUrl } from '../../config/seo';
 import { getWriting, getWritings } from '../../lib/notion';
-import Post from '../../types/Post'
+import Post from '../../types/Post';
 
 dayjs.extend(relativeTime)
 
@@ -60,12 +60,12 @@ const Writing = ({ pages, page }: { pages: any, page: Post }) => {
               title={routes.writing.title}
             />
             <ListView.Content>
-              <div className='max-w-xl'>
+              <div className='max-w-2xl'>
                 <div className='mb-8'>
-                  <h1 className='text-2xl font-bold dark:text-white'>{page.icon?.emoji} {page.title}</h1>
+                  <h1 className='text-2xl font-bold dark:text-white'>{page.title}</h1>
                   <div className='mt-2 text-neutral-500'>Published {dayjs().to(page.createdAt)} · Updated {dayjs().to(page.updatedAt)}</div>
                 </div>
-                <div className='prose prose-p:mb-3 prose-p:mt-3 dark:prose-invert leading-normal'>
+                <div className='prose prose-p:mb-3 prose-p:mt-3 dark:prose-invert dark:text-neutral-400 text-black'>
                   {page !== undefined && <NotionPage blocks={page.blocks} />}
                 </div>
               </div>
