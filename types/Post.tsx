@@ -8,6 +8,6 @@ export default interface Post {
   excerpt?: string;
   slug: string | null;
   blocks?: [];
-  createdAt: string | null;
+  createdAt: string;
   updatedAt: string;
 }
