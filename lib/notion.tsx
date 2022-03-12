@@ -51,7 +51,9 @@ export const getWritings = async (): Promise<Post[]> => {
       excerpt: result.properties.excerpt.rich_text[0].plain_text,
       createdAt: new Date(result.properties.created_at.date.start).toISOString(),
       updatedAt: result.last_edited_time
-    }))
+    })).sort((a: Post, b: Post) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
 }
 
 export const getWriting = async (slug: string) => {  
@@ -70,8 +72,6 @@ export const getWriting = async (slug: string) => {
   const pageId = response.results[0].id;
   const page = _transformPage(response.results[0]);
   const blocks = await _getBlocks(pageId);
-
-  console.log(blocks)
 
   return {
     ...page,
