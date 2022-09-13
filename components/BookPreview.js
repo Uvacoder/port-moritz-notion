@@ -6,7 +6,7 @@ export default function BookPreview({ book }) {
       <div className='flex items-center'>
         <div className='bg-neutral-50 dark:bg-neutral-900 p-4'>
           <div className='flex-none h-24 w-16 relative dark:bg-neutral-800 bg-neutral-200 rounded dark:opacity-50'>
-            {book.imageLinks.thumbnail && <Image src={book.imageLinks.thumbnail} className='rounded ' alt={book.title} layout="fill" />}
+            {book.imageLinks.thumbnail && <img src={book.imageLinks.thumbnail} className='rounded ' alt={book.title} />}
           </div>
         </div>
         <div className='m-4'>
